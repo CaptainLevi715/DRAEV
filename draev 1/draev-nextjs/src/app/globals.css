@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Offsets anchor scrolling (nav links, #drop/#story/#custom) so content
+     doesn't land hidden behind the fixed 96px header. */
+  scroll-padding-top: 96px;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  /* Removes the gray tap-flash box and the delay before a tap registers
+     on Android Chrome, so buttons/links feel instant rather than laggy. */
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  touch-action: manipulation;
+}
+
+body {
+  background-color: #990002;
+  color: #f5efe8;
+  overscroll-behavior-y: none;
+}
+::selection {
+  background: #f5efe8;
+  color: #990002;
+}
+
+.paper-card {
+  background-color: #7e0000;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@layer components {
+  .btn-solid {
+    background-color: #f5efe8;
+    color: #7a0002;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    display: inline-block;
+  }
+  .btn-solid:hover {
+    background-color: #ffffff;
+  }
+  .btn-solid:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #f5efe8;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    display: inline-block;
+    background-color: transparent;
+  }
+  .btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: #fff;
+  }
+}
+
+.zoom-wrap {
+  overflow: hidden;
+}
+.zoom-wrap img {
+  transition: transform 0.6s ease;
+}
+.zoom-wrap:hover img {
+  transform: scale(1.08);
+}
+
+.cart-drawer {
+  transition: transform 0.4s ease;
+  overscroll-behavior: contain;
+}
+.cart-drawer.closed {
+  transform: translateX(100%);
+}
+
+.quickview {
+  transition: opacity 0.25s ease;
+}
+.quickview > div:last-child,
+.checkout-modal > div:last-child {
+  overscroll-behavior: contain;
+}
+.checkout-modal {
+  transition: opacity 0.25s ease;
+}
+
+.sold-out {
+  opacity: 0.45;
+}
+.sold-out img {
+  filter: grayscale(1);
+}
+
+.pay-tab.active {
+  background-color: #f5efe8;
+  color: #7a0002;
+}
+.pay-tab {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #f5efe8;
+  background-color: transparent;
+}
